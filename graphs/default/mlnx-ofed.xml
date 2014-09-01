@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="no"?>
+
+<graph>
+
+	<description>
+        The mlnx-ofed roll bundles the Mellanox OFED for Linux distribution for Rocks(r)
+       </description>
+
+	<copyright>
+	Copyright (c) 2000 - 2012 The Regents of the University of California.
+	</copyright>
+
+	<!-- add edges here -->
+	<!-- OFED by default -->
+	<edge from="base" cond="not disable_ofed">
+	  <to>mlnx-ofed</to>
+	</edge>
+	<order head="base">
+	  <tail>mlnx-ofed</tail>
+	</order>
+
+</graph>

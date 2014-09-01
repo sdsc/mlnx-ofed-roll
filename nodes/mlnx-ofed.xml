@@ -1,0 +1,82 @@
+<?xml version="1.0" standalone="no"?>
+
+<kickstart>
+
+
+	<description>
+	The mlnx-ofed roll bundles the Mellanox OFED for Linux distribution for Rocks(r)
+	</description>
+
+	<copyright>
+	Copyright (c) 2000 - 2012 The Regents of the University of California.
+	</copyright>
+
+	<!-- MLNX_OFED_LINUX RPMS from the 'vma' package set -->
+	<package>ibacm</package>
+	<package>ibdump</package>
+	<package>ibutils</package>
+	<package>ibutils2</package>
+	<package>infiniband-diags</package>
+	<package>infiniband-diags-compat</package>
+	<package>iser</package>
+	<package>kernel-ib</package>
+	<package>kernel-ib-devel</package>
+	<package>kernel-mft</package>
+	<package>libibmad</package>
+	<package>libibumad</package>
+	<package>libibumad-devel</package>
+	<package>libibverbs</package>
+	<package>libibverbs-devel</package>
+	<package>libibverbs-devel-static</package>
+	<package>libibverbs-utils</package>
+	<package>libmlx4</package>
+	<package>libmlx4-devel</package>
+	<package>libmlx5</package>
+	<package>libmlx5-devel</package>
+	<package>librdmacm</package>
+	<package>librdmacm-devel</package>
+	<package>librdmacm-utils</package>
+	<package>libvma</package>
+	<package>mft</package>
+	<package>mlnxofed-docs</package>
+	<package>mstflint</package>
+	<package>ofed-scripts</package>
+	<package>opensm</package>
+	<package>opensm-devel</package>
+	<package>opensm-libs</package>
+	<package>opensm-static</package>
+	<package>perftest</package>
+	<package>srp</package>
+
+	<!-- Configuration RPM's -->
+	<package>mlnx-ofed-infiniband-conf</package>
+	<package>mlnx-ofed-modprobe-d-conf</package>
+	
+<post>
+<!-- Need to change this section to be Pythonic and complete
+          different parts based on nodename and/or membership -->
+
+<!-- Only run opensmd on a single node - disable on all but subnet manager -->
+[ -f /etc/init.d/opensmd ] &amp;&amp; /sbin/chkconfig opensmd off
+
+<!-- Tweak /etc/infiniband/openibd.conf -->
+/bin/sed -i 's/RUN_AFFINITY_TUNER=no/RUN_AFFINITY_TUNER=yes/g' /etc/infiniband/openibd.conf
+/bin/sed -i 's/MLX5_LOAD=yes/MLX5_LOAD=no/g' /etc/infiniband/openibd.conf
+/bin/sed -i 's/SET_IPOIB_CM=auto/SET_IPOIB_CM=yes/g' /etc/infiniband/openibd.conf
+
+<!-- Set the PCI device/channel mapping - vm-containers only -->
+<file name="/etc/infiniband/connectx.conf" perms="0644">
+# ConnectX Port Configuration for 0000:08:00.0
+/sbin/connectx_port_config -d 0000:08:00.0 -c ib
+# ConnectX Port Configuration for 0000:07:00.0
+/sbin/connectx_port_config -d 0000:07:00.0 -c ib,eth
+</file>
+
+<!-- Setup the VFs for SR-IOV -->
+<file name="/etc/modprobe.d/mlx4_core.conf" perms="0644">
+options mlx4_core num_vfs=6 port_type_array=1,2
+</file>
+
+</post>
+
+</kickstart>
