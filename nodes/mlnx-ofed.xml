@@ -80,6 +80,10 @@
 options mlx4_core num_vfs=6 port_type_array=1,2
 </file>
 
+<!-- Various Mellanox Tunings... -->
+[ -f /etc/init.d/irqaffinity ] &amp;&amp; /sbin/chkconfig irqaffinity off
+for n in {0..15}; do echo performance &gt; /sys/devices/system/cpu/cpu${n}/cpufreq/scaling_governor; done
+
 </post>
 
 </kickstart>
