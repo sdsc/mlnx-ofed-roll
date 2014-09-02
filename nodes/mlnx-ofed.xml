@@ -59,10 +59,10 @@
 <!-- Only run opensmd on a single node - disable on all but subnet manager -->
 [ -f /etc/init.d/opensmd ] &amp;&amp; /sbin/chkconfig opensmd off
 
-<!-- Tweak /etc/infiniband/openibd.conf -->
-/bin/sed -i 's/RUN_AFFINITY_TUNER=no/RUN_AFFINITY_TUNER=yes/g' /etc/infiniband/openibd.conf
-/bin/sed -i 's/MLX5_LOAD=yes/MLX5_LOAD=no/g' /etc/infiniband/openibd.conf
-/bin/sed -i 's/SET_IPOIB_CM=auto/SET_IPOIB_CM=yes/g' /etc/infiniband/openibd.conf
+<!-- Tweak /etc/infiniband/openib.conf -->
+/bin/sed -i 's/RUN_AFFINITY_TUNER=no/RUN_AFFINITY_TUNER=yes/g' /etc/infiniband/openib.conf
+/bin/sed -i 's/MLX5_LOAD=yes/MLX5_LOAD=no/g' /etc/infiniband/openib.conf
+/bin/sed -i 's/SET_IPOIB_CM=auto/SET_IPOIB_CM=yes/g' /etc/infiniband/openib.conf
 
 <!-- Set the PCI device/channel mapping - vm-containers only -->
 <file name="/etc/infiniband/connectx.conf" perms="0644">
