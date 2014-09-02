@@ -59,6 +59,9 @@
 <!-- Only run opensmd on a single node - disable on all but subnet manager -->
 [ -f /etc/init.d/opensmd ] &amp;&amp; /sbin/chkconfig opensmd off
 
+<!-- ibacm is not enabled by the Mellanox installer with a no-scripts rpm option -->
+[ -f /etc/init.d/ibacm ] &amp;&amp; /sbin/chkconfig ibacm off
+
 <!-- Tweak /etc/infiniband/openib.conf -->
 /bin/sed -i 's/RUN_AFFINITY_TUNER=no/RUN_AFFINITY_TUNER=yes/g' /etc/infiniband/openib.conf
 /bin/sed -i 's/MLX5_LOAD=yes/MLX5_LOAD=no/g' /etc/infiniband/openib.conf
