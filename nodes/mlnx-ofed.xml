@@ -46,6 +46,7 @@
 	<package>opensm-libs</package>
 	<package>opensm-static</package>
 	<package>perftest</package>
+	<package>qperf</package>
 	<package>srp</package>
 
 	<!-- Configuration RPM's -->
