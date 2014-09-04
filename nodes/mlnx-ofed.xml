@@ -82,8 +82,26 @@ options mlx4_core num_vfs=6 port_type_array=1,2
 </file>
 
 <!-- Various Mellanox Tunings... -->
-[ -f /etc/init.d/irqaffinity ] &amp;&amp; /sbin/chkconfig irqaffinity off
-for n in {0..15}; do echo performance &gt; /sys/devices/system/cpu/cpu${n}/cpufreq/scaling_governor; done
+<file name="/etc/rc.d/rocksconfig.d/post-97-mlnx-ofed-tuning" perms="0755">
+#!/bin/sh
+
+MIN_CPU=$(cut -d- -f1 /sys/devices/system/cpu/present)
+MAX_CPU=$(cut -d- -f2 /sys/devices/system/cpu/present)
+
+if [ -f /etc/init.d/irqaffinity ]; then
+  /sbin/chkconfig irqaffinity off
+  /sbin/service irqaffinity stop
+fi
+
+if [ -f /etc/init.d/irqbalance ]; then
+  /sbin/chkconfig irqbalance off
+  /sbin/service irqbalance stop
+fi
+
+for cpu in $(seq ${MIN_CPU} ${MAX_CPU}); do
+  echo "performance" > /sys/devices/system/cpu/cpu${cpu}/cpufreq/scaling_governor;
+done
+</file>
 
 </post>
 
