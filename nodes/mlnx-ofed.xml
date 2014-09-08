@@ -57,9 +57,6 @@
 <!-- Need to change this section to be Pythonic and complete
           different parts based on nodename and/or membership -->
 
-<!-- Only run opensmd on a single node - disable on all but subnet manager -->
-[ -f /etc/init.d/opensmd ] &amp;&amp; /sbin/chkconfig opensmd off
-
 <!-- ibacm is not enabled by the Mellanox installer with a no-scripts rpm option -->
 [ -f /etc/init.d/ibacm ] &amp;&amp; /sbin/chkconfig ibacm off
 
