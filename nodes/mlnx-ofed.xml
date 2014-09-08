@@ -60,24 +60,6 @@
 <!-- ibacm is not enabled by the Mellanox installer with a no-scripts rpm option -->
 [ -f /etc/init.d/ibacm ] &amp;&amp; /sbin/chkconfig ibacm off
 
-<!-- Tweak /etc/infiniband/openib.conf -->
-/bin/sed -i 's/RUN_AFFINITY_TUNER=no/RUN_AFFINITY_TUNER=yes/g' /etc/infiniband/openib.conf
-/bin/sed -i 's/MLX5_LOAD=yes/MLX5_LOAD=no/g' /etc/infiniband/openib.conf
-/bin/sed -i 's/SET_IPOIB_CM=auto/SET_IPOIB_CM=yes/g' /etc/infiniband/openib.conf
-
-<!-- Set the PCI device/channel mapping - vm-containers only -->
-<file name="/etc/infiniband/connectx.conf" perms="0644">
-# ConnectX Port Configuration for 0000:08:00.0
-/sbin/connectx_port_config -d 0000:08:00.0 -c ib
-# ConnectX Port Configuration for 0000:07:00.0
-/sbin/connectx_port_config -d 0000:07:00.0 -c ib,eth
-</file>
-
-<!-- Setup the VFs for SR-IOV -->
-<file name="/etc/modprobe.d/mlx4_core.conf" perms="0644">
-options mlx4_core num_vfs=6 port_type_array=1,2
-</file>
-
 <!-- Various Mellanox Tunings... -->
 <file name="/etc/rc.d/rocksconfig.d/post-97-mlnx-ofed-tuning" perms="0755">
 #!/bin/sh
