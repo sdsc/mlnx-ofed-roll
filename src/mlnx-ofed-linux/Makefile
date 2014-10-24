@@ -61,12 +61,24 @@ REDHAT.ROOT = $(CURDIR)/../../
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
 
-build:
-	
+include pull.mk
+
+build: $(SRC_DIRS)
+	mount -o loop $(ISO_NAME) /mnt/cdrom
+	/mnt/cdrom/mlnx_add_kernel_support.sh --mlnx_ofed /mnt/cdrom --make-tgz -y
+	tar -xzf /tmp/$(SOURCE_PKG)
+
 install::
 	mkdir -p $(ROOT)/$(PKGROOT)
-	(							\
-		cp -av $(FILES) $(ROOT)/$(PKGROOT)/ 		\
+	mkdir -p $(REDHAT.ROOT)/RPMS/{noarch,x86_64}
+	find $(SOURCE_DIR)/RPMS -name "*.x86_64.rpm" \
+	  -exec cp -av '{}' ../../RPMS/x86_64/ \;
+	find $(SOURCE_DIR)/RPMS -name "*.noarch.rpm" \
+	  -exec cp -av '{}' ../../RPMS/noarch/ \;
+	(	\
+		cd $(ROOT)/$(PKGROOT); \
+		tar -xz --strip-components 1 -f /tmp/$(SOURCE_PKG) ; \
 	)
 
 clean::
+	rm -rf $(SOURCE_DIR)
