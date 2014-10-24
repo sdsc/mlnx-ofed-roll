@@ -23,6 +23,7 @@
 	<package>kernel-ib-devel</package>
 	<package>kernel-mft</package>
 	<package>libibmad</package>
+	<package>libibmad-devel</package>
 	<package>libibumad</package>
 	<package>libibumad-devel</package>
 	<package>libibverbs</package>
