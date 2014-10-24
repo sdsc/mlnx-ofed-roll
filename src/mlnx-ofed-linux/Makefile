@@ -67,6 +67,7 @@ build: $(SRC_DIRS)
 	mount -o loop $(ISO_NAME) /mnt/cdrom
 	/mnt/cdrom/mlnx_add_kernel_support.sh --mlnx_ofed /mnt/cdrom --make-tgz -y
 	tar -xzf /tmp/$(SOURCE_PKG)
+	umount /mnt/cdrom
 
 install::
 	mkdir -p $(ROOT)/$(PKGROOT)
