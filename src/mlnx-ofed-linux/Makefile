@@ -65,8 +65,10 @@ include pull.mk
 
 build: $(SRC_DIRS)
 	mount -o loop $(ISO_NAME) /mnt/cdrom
-	/mnt/cdrom/mlnx_add_kernel_support.sh --mlnx_ofed /mnt/cdrom --make-tgz -y
-	tar -xzf /tmp/$(SOURCE_PKG)
+	grep `uname -r` /mnt/cdrom/.supported_kernels
+	mkdir -p $(SOURCE_DIR)
+	cp -ra /mnt/cdrom/* $(SOURCE_DIR)
+	tar -czf /tmp/$(SOURCE_PKG) $(SOURCE_DIR)
 	umount /mnt/cdrom
 
 install::

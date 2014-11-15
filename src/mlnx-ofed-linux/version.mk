@@ -1,7 +1,7 @@
 NAME              = mlnx-ofed-linux
 VERSION           = 2.3
-RELEASE           = 1.0.1
-EXTRA             = rhel6.5-x86_64
+RELEASE           = 2.0.0
+EXTRA             = rhel6.6-x86_64
 PKGROOT           = /opt/mlnx-ofed-linux
 
 SRC_SUBDIR        = mlnx-ofed-linux
