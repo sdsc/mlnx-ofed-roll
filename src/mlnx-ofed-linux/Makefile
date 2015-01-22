@@ -64,22 +64,22 @@ include Rules.mk
 include pull.mk
 
 build: $(SRC_DIRS)
-	mount -o loop $(ISO_NAME) /mnt/cdrom
-	/mnt/cdrom/mlnx_add_kernel_support.sh --mlnx_ofed /mnt/cdrom --make-tgz -y
-	tar -xzf /tmp/$(SOURCE_PKG)
-	umount /mnt/cdrom
+	$(SOURCE_DIR)/mlnx_add_kernel_support.sh -y -m $(PWD)/$(SOURCE_DIR) --make-tgz
+	mv /tmp/$(SOURCE_PKG_EXT) ./
+	tar -xzf $(SOURCE_PKG_EXT)
+	grep `uname -r` $(SOURCE_DIR_EXT)/.added_kernels
 
 install::
 	mkdir -p $(ROOT)/$(PKGROOT)
 	mkdir -p $(REDHAT.ROOT)/RPMS/{noarch,x86_64}
-	find $(SOURCE_DIR)/RPMS -name "*.x86_64.rpm" \
+	find $(SOURCE_DIR_EXT)/RPMS -name "*.x86_64.rpm" \
 	  -exec cp -av '{}' ../../RPMS/x86_64/ \;
-	find $(SOURCE_DIR)/RPMS -name "*.noarch.rpm" \
+	find $(SOURCE_DIR_EXT)/RPMS -name "*.noarch.rpm" \
 	  -exec cp -av '{}' ../../RPMS/noarch/ \;
 	(	\
 		cd $(ROOT)/$(PKGROOT); \
-		tar -xz --strip-components 1 -f /tmp/$(SOURCE_PKG) ; \
+		tar -xz --strip-components 1 -f $(SOURCE_PKG_EXT) ; \
 	)
 
 clean::
-	rm -rf $(SOURCE_DIR)
+	rm -rf $(SOURCE_DIR) $(SOURCE_DIR_EXT)
