@@ -65,7 +65,7 @@ include pull.mk
 
 build: $(SRC_DIRS)
 	$(SOURCE_DIR)/mlnx_add_kernel_support.sh -y -m $(PWD)/$(SOURCE_DIR) --make-tgz
-	mv /tmp/$(SOURCE_PKG_EXT) ./
+	cp /tmp/$(SOURCE_PKG_EXT) ./
 	tar -xzf $(SOURCE_PKG_EXT)
 	grep `uname -r` $(SOURCE_DIR_EXT)/.added_kernels
 
@@ -78,7 +78,7 @@ install::
 	  -exec cp -av '{}' ../../RPMS/noarch/ \;
 	(	\
 		cd $(ROOT)/$(PKGROOT); \
-		tar -xz --strip-components 1 -f $(SOURCE_PKG_EXT) ; \
+		tar -xz --strip-components 1 -f /tmp/$(SOURCE_PKG_EXT) ; \
 	)
 
 clean::
