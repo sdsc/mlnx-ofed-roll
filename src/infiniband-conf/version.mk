@@ -1,4 +1,4 @@
-PKGROOT         = /etc/inifiniband
+PKGROOT         = /etc/infiniband
 NAME            = mlnx-ofed-infiniband-conf
 VERSION         :=$(shell bash ../../version.sh -v)
 RELEASE         :=$(shell bash ../../version.sh -h)
