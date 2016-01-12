@@ -19,9 +19,8 @@
 	<package>infiniband-diags</package>
 	<package>infiniband-diags-compat</package>
 	<package>iser</package>
-	<package>kernel-ib</package>
-	<package>kernel-ib-devel</package>
 	<package>kernel-mft</package>
+	<package>kmod-mlnx-ofa_kernel</package>
 	<package>libibmad</package>
 	<package>libibmad-devel</package>
 	<package>libibumad</package>
@@ -39,6 +38,8 @@
 	<package>librdmacm-utils</package>
 	<package>libvma</package>
 	<package>mft</package>
+	<package>mlnx-ofa_kernel</package>
+	<package>mlnx-ofa_kernel-devel</package>
 	<package>mlnxofed-docs</package>
 	<package>mstflint</package>
 	<package>ofed-scripts</package>
