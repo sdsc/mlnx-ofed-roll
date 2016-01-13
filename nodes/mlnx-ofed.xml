@@ -11,48 +11,56 @@
 	Copyright (c) 2000 - 2012 The Regents of the University of California.
 	</copyright>
 
-	<!-- MLNX_OFED_LINUX RPMS from the 'vma' package set -->
-	<package>ibacm</package>
-	<package>ibdump</package>
-	<package>ibutils</package>
-	<package>ibutils2</package>
-	<package>infiniband-diags</package>
-	<package>infiniband-diags-compat</package>
-	<package>iser</package>
-	<package>kernel-mft</package>
-	<package>kmod-mlnx-ofa_kernel</package>
-	<package>libibmad</package>
-	<package>libibmad-devel</package>
-	<package>libibumad</package>
-	<package>libibumad-devel</package>
+	<!-- MLNX_OFED_LINUX RPMS from the vma package set for hypervisors -->
+
+	<package>ofed-scripts</package>
 	<package>libibverbs</package>
+	<package>libibcm</package>
 	<package>libibverbs-devel</package>
+	<package>libibcm-devel</package>
+	<package>libibumad</package>
+	<package>ibacm</package>
+	<package>librdmacm</package>
+	<package>librdmacm-utils</package>
+	<package>librdmacm-devel</package>
 	<package>libibverbs-devel-static</package>
 	<package>libibverbs-utils</package>
 	<package>libmlx4</package>
 	<package>libmlx4-devel</package>
 	<package>libmlx5</package>
 	<package>libmlx5-devel</package>
-	<package>librdmacm</package>
-	<package>librdmacm-devel</package>
-	<package>librdmacm-utils</package>
-	<package>libvma</package>
+	<package>libibumad-devel</package>
+	<package>libibumad-static</package>
+	<package>libibmad</package>
+	<package>libibmad-devel</package>
+	<package>libibmad-static</package>
+	<package>perftest</package>
+	<package>srptools</package>
+	<package>qperf</package>
+	<package>rds-tools</package>
+	<package>rds-devel</package>
+	<package>mlnx-ethtool</package>
+	<package>opensm-libs</package>
+	<package>infiniband-diags</package>
+	<package>infiniband-diags-compat</package>
+	<package>mstflint</package>
+	<package>dapl</package>
+	<package>dapl-devel</package>
+	<package>dapl-devel-static</package>
+	<package>dapl-utils</package>
+	<package>opensm</package>
+	<package>opensm-devel</package>
+	<package>opensm-static</package>
+	<package>ibutils2</package>
+	<package>ibutils</package>
 	<package>mft</package>
 	<package>mlnx-ofa_kernel</package>
 	<package>mlnx-ofa_kernel-devel</package>
-	<package>mlnxofed-docs</package>
-	<package>mstflint</package>
-	<package>ofed-scripts</package>
-	<package>opensm</package>
-	<package>opensm-devel</package>
-	<package>opensm-libs</package>
-	<package>opensm-static</package>
-	<package>perftest</package>
-	<package>qperf</package>
+	<package>kernel-mft-mlnx</package>
+	<package>iser</package>
 	<package>srp</package>
 
 	<!-- Configuration RPM's -->
-	<package>mlnx-ofed-infiniband-conf</package>
 	<package>mlnx-ofed-modprobe-d-conf</package>
 	
 <post>
