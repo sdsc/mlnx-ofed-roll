@@ -54,6 +54,7 @@
 	<package>ibutils2</package>
 	<package>ibutils</package>
 	<package>mft</package>
+	<package>kmod-mlnx-ofa_kernel</package>
 	<package>mlnx-ofa_kernel</package>
 	<package>mlnx-ofa_kernel-devel</package>
 	<package>kernel-mft-mlnx</package>
