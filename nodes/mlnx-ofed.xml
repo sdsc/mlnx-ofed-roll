@@ -51,6 +51,7 @@
 	<package>opensm</package>
 	<package>opensm-devel</package>
 	<package>opensm-static</package>
+	<package>ibdump</package>
 	<package>ibutils2</package>
 	<package>ibutils</package>
 	<package>mft</package>
