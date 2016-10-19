@@ -67,7 +67,7 @@ build: $(SRC_DIRS)
 	$(SOURCE_DIR)/mlnx_add_kernel_support.sh -y -m $(PWD)/$(SOURCE_DIR) --make-tgz
 	cp /tmp/$(SOURCE_PKG_EXT) ./
 	tar -xzf $(SOURCE_PKG_EXT)
-	grep `uname -r` $(SOURCE_DIR_EXT)/.added_kernels
+	grep `uname -r` $(SOURCE_DIR_EXT)/.supported_kernels
 
 install::
 	mkdir -p $(ROOT)/$(PKGROOT)
