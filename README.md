@@ -17,7 +17,7 @@ for your system please visit their official web pages:
 
 - [Mellanox OFED Linux (MLNX_OFED)][mlnx_ofed_linux]
 
-[mlnx_ofed_linux]: [http://www.mellanox.com/page/products_dyn?product_family=26&mtag=linux_sw_drivers]
+[mlnx_ofed_linux]: http://www.mellanox.com/page/products_dyn?product_family=26&mtag=linux_sw_drivers
 
 
 ## Requirements
@@ -87,7 +87,7 @@ your system
 stack and place in the `src/mlnx-ofed-linux` directory
 - Generate an updated entry for the binary_hashes file in the `src/mlnx-ofed-linux`
 directory using [this script][gen_hash]. For example...
-[gen_hash]: [https://raw.githubusercontent.com/sdsc/skeleton-roll/master/gen_hash.sh]
+[gen_hash]: https://raw.githubusercontent.com/sdsc/skeleton-roll/master/gen_hash.sh
 
 ```shell
     cd src/mlnx-ofed-linux
