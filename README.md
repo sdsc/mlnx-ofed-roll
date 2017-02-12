@@ -70,6 +70,35 @@ from the build server during the roll build. DO NOT build this roll on a
 frontend which is acting as your subnet manager.*
 
 
+## Alternate Versions of MLNX_OFED_LINUX
+
+This roll is used to build the Mellanox OFED Linux stack that is **in production**
+on SDSC HPC systems. As such, specific versions of MLNX_OFED_LINUX sources that
+support our installed hardware and target OS are used in the build process.
+
+If your hardware or OS require a different version of MLNX_OFED_LINUX it is
+straightforward to change the roll to build that version.
+
+Follow these steps...
+
+- Identify the version of MLNX_OFED_LINUX you would like to build/install on
+your system
+- Download the `tgz` version of the [MLNX_OFED_LINUX][mlnx_ofed_linux] software
+stack and place in the `src/mlnx-ofed-linux` directory
+- Generate an updated entry for the binary_hashes file in the `src/mlnx-ofed-linux`
+directory using [this script][gen_hash]. For example...
+[gen_hash]: [https://raw.githubusercontent.com/sdsc/skeleton-roll/master/gen_hash.sh]
+
+```shell
+    cd src/mlnx-ofed-linux
+    cp ~/Downloads/MLNX_OFED_LINUX-3.4-1.0.0.0-rhel6.8-x86_64.tgz ./
+    curl -LO https://raw.githubusercontent.com/sdsc/skeleton-roll/master/gen_hash.sh
+    sh ./gen_hash.sh MLNX_OFED_LINUX-3.4-1.0.0.0-rhel6.8-x86_64.tgz | tee -a binary_hashes
+    223210577  bc779f4b3a5c07fb801271bb68d6d07efa24fd03  MLNX_OFED_LINUX-3.4-1.0.0.0-rhel6.8-x86_64.tgz
+```
+
+- Modify the `version.mk` file in the `src/mlnx-ofed-linux` directory as/if
+necessary
 
 
 ## Building
