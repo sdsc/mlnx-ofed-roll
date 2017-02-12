@@ -4,6 +4,20 @@
 
 This roll bundles the Mellanox OFED Linux distribution for installation on a Rocks(r) cluster.
 
+> #### IMPORTANT NOTE
+>
+> **The Mellanox OFED Linux software must be obtained from Mellanox&reg;
+> directly as this roll only wraps the software into a Rocks&reg; roll for
+> installation into a Rocks&reg; cluster.**
+
+For more information about the various packages included in the Mellanox OFED
+Linux software stack and to download the MLNX_OFED_LINUX software archive
+for your system please visit their official web pages:
+
+- [Mellanox OFED Linux (MLNX_OFED)][mlnx_ofed_linux]
+
+[mlnx_ofed_linux]: [http://www.mellanox.com/page/products_dyn?product_family=26&mtag=linux_sw_drivers]
+
 
 ## Requirements
 
