@@ -2,7 +2,8 @@
 
 ## Overview
 
-This roll bundles the Mellanox OFED Linux distribution for installation on a Rocks(r) cluster.
+This roll bundles the Mellanox&reg; OFED Linux distribution for installation on a
+Rocks&reg; cluster.
 
 > #### IMPORTANT NOTE
 >
@@ -21,12 +22,12 @@ for your system please visit their official web pages:
 
 ## Requirements
 
-To build/install this roll you must have root access to a Rocks development
+To build/install this roll you must have root access to a Rocks&reg; development
 machine (e.g., a frontend or development appliance).
 
-If your Rocks development machine does *not* have Internet access you must
-download the appropriate mpi source file(s) using a machine that does
-have Internet access and copy them into the `src/<package>` directories on your
+If your Rocks development machine does **not** have Internet access you must
+download the appropriate MLNX_OFED_LINUX source file(s) using a machine that does
+have Internet access and copy them into the `src/mlnx-ofed-linux` directory on your
 Rocks development machine.
 
 
@@ -111,5 +112,3 @@ to work properly. Specifically, the modification of the files...
     /etc/modprobe.d/mlx4_core.conf
 
 ...will be unique for each system.
-
-
