@@ -18,6 +18,43 @@ Rocks development machine.
 
 ## Dependencies
 
+This roll wraps up the basic Mellanox OFED Linux installation process into a
+Rocks&reg; roll which can be used to install all nodes in a cluster. Part of this
+process includes building kernel modules for the running kernel and adding the
+produced RPMs to the roll. Otherwise, binary RPMs provided by Mellanox are
+added unchanged to the roll.
+
+To build updated kernel modules the following packages are required on the
+host building the roll...
+
+- perl
+- pciutils
+- python
+- gcc-gfortran
+- libxml2-python
+- tcsh
+- libnl.i686
+- libnl
+- expat
+- glib2
+- tcl
+- libstdc++
+- bc
+- tk
+- gtk2
+- atk
+- cairo
+- numactl
+- pkgconfig
+- ethtool
+
+These RPMs are generally included on Rocks&reg; frontend and development servers.
+
+*NOTE: The roll build process will **UNINSTALL** all Mellanox OFED Linux RPMs
+from the build server during the roll build. DO NOT build this roll on a
+frontend which is acting as your subnet manager.*
+
+
 
 
 ## Building
