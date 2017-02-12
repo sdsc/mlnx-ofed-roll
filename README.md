@@ -73,16 +73,17 @@ frontend which is acting as your subnet manager.*
 ## Alternate Versions of MLNX_OFED_LINUX
 
 This roll is used to build the Mellanox OFED Linux stack that is **in production**
-on SDSC HPC systems. As such, specific versions of MLNX_OFED_LINUX sources that
-support our installed hardware and target OS are used in the build process.
+on SDSC HPC systems. As such, specific versions of [MLNX_OFED_LINUX][mlnx_ofed_linux]
+sources that support our installed hardware and target OS are used in the build
+process.
 
-If your hardware or OS require a different version of MLNX_OFED_LINUX it is
-straightforward to change the roll to build that version.
+If your hardware or OS require a different version of [MLNX_OFED_LINUX][mlnx_ofed_linux]
+it is straightforward to change the roll to build that version.
 
 Follow these steps...
 
-- Identify the version of MLNX_OFED_LINUX you would like to build/install on
-your system
+- Identify the version of [MLNX_OFED_LINUX][mlnx_ofed_linux] you would like to
+build/install on your system
 - Download the `tgz` version of the [MLNX_OFED_LINUX][mlnx_ofed_linux] software
 stack and place in the `src/mlnx-ofed-linux` directory
 - Generate an updated entry for the binary_hashes file in the `src/mlnx-ofed-linux`
