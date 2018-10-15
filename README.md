@@ -135,7 +135,7 @@ To install, execute these instructions on a Rocks frontend:
 ## Configuration
 
 The mlnx-ofed roll will likely need configuration for your system in order
-to work properly. Specifically, the modification of the files...
+to work properly. Specifically, the creation and/or modification of the files...
 
     /etc/infiniband/openibd.conf
     /etc/infiniband/connectx.conf

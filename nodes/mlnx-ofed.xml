@@ -62,9 +62,6 @@
 	<package>iser</package>
 	<package>srp</package>
 
-	<!-- Configuration RPM's -->
-	<package>mlnx-ofed-modprobe-d-conf</package>
-	
 <post>
 <!-- Need to change this section to be Pythonic and complete
           different parts based on nodename and/or membership -->
