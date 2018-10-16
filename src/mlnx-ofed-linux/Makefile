@@ -64,7 +64,7 @@ include Rules.mk
 include pull.mk
 
 build: $(SRC_DIRS)
-	$(SOURCE_DIR)/mlnx_add_kernel_support.sh -y -m $(PWD)/$(SOURCE_DIR) --make-tgz --distro rhel6.8
+	$(SOURCE_DIR)/mlnx_add_kernel_support.sh -y -m $(PWD)/$(SOURCE_DIR) --make-tgz --distro $(DISTRO)
 	cp /tmp/$(SOURCE_PKG_EXT) ./
 	tar -xzf $(SOURCE_PKG_EXT)
 	grep `uname -r` $(SOURCE_DIR_EXT)/.supported_kernels
