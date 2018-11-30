@@ -98,6 +98,14 @@ for cpu in $(seq ${MIN_CPU} ${MAX_CPU}); do
 done
 </file>
 
+
+<file name="/etc/infiniband/openib.conf" mode="append">
+
+# DO NOT run Firmware update utlity upon system boot in order to update Firmware for newly installed devices
+RUN_FW_UPDATER_ONBOOT=no
+
+</file>
+
 </post>
 
 </kickstart>
