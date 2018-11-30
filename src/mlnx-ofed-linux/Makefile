@@ -80,6 +80,9 @@ install::
 		cd $(ROOT)/$(PKGROOT); \
 		tar -xz --strip-components 1 -f /tmp/$(SOURCE_PKG_EXT) ; \
 	)
+	echo "Removing provided META RPMs..."
+	find $(REDHAT.ROOT)/RPMS/noarch -name "mlnx-ofed-*.rpm" ! -mtime 0 \
+	  -exec /bin/rm -v '{}' \;
 
 clean::
 	rm -rf $(SOURCE_DIR) $(SOURCE_DIR_EXT)
