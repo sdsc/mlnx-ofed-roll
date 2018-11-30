@@ -88,6 +88,11 @@ if [ -f /etc/init.d/irqbalance ]; then
   /sbin/service irqbalance stop
 fi
 
+if [ -f /usr/lib/systemd/system/irqbalance.service ]; then
+  /usr/bin/systemctl stop irqbalance.service
+  /usr/bin/systemctl disable irqbalance.service
+fi
+
 for cpu in $(seq ${MIN_CPU} ${MAX_CPU}); do
   echo "performance" > /sys/devices/system/cpu/cpu${cpu}/cpufreq/scaling_governor;
 done
