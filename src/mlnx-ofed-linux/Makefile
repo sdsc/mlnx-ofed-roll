@@ -72,9 +72,9 @@ build: $(SRC_DIRS)
 install::
 	mkdir -p $(ROOT)/$(PKGROOT)
 	mkdir -p $(REDHAT.ROOT)/RPMS/{noarch,x86_64}
-	find $(SOURCE_DIR_EXT)/RPMS -name "*.x86_64.rpm" \
+	find $(SOURCE_DIR_EXT)/RPMS -mindepth 1 -maxdepth 1 -name "*.x86_64.rpm" -type f \
 	  -exec cp -av '{}' ../../RPMS/x86_64/ \;
-	find $(SOURCE_DIR_EXT)/RPMS -name "*.noarch.rpm" \
+	find $(SOURCE_DIR_EXT)/RPMS -mindepth 1 -maxdepth 1 -name "*.noarch.rpm" -type f \
 	  -exec cp -av '{}' ../../RPMS/noarch/ \;
 	(	\
 		cd $(ROOT)/$(PKGROOT); \
