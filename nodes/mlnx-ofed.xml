@@ -12,6 +12,8 @@
 	</copyright>
 
 	<!-- MLNX_OFED_LINUX RPMS from the vma package set for hypervisors -->
+	<!-- Custom package to resolve /bin/python dependency for mlnx-ofa_kernel RPM -->
+	<package>sdsc-mlnx-ofa_pythonresolve</package>
 
 	<package>ofed-scripts</package>
 	<package>libibverbs</package>
