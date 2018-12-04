@@ -11,56 +11,58 @@
 	Copyright (c) 2000 - 2018 The Regents of the University of California.
 	</copyright>
 
-	<!-- MLNX_OFED_LINUX RPMS from the vma package set for hypervisors -->
+	<!-- Custom package to resolve /bin/python dependency for mlnx-ofa_kernel RPM -->
+	<package>sdsc-mlnx-ofa_pythonresolve</package>
 
+	<!-- MLNX_OFED_LINUX RPMS from the kernel-only package set WITHOUT the kmod-* RPMS -->
+	<package>mlnx-ofa_kernel</package>
+	<package>mlnx-ofa_kernel-devel</package>
 	<package>ofed-scripts</package>
-	<package>libibverbs</package>
-	<package>libibcm</package>
-	<package>libibverbs-devel</package>
-	<package>libibcm-devel</package>
-	<package>libibumad</package>
+
+	<!-- Custom MLNX_OFED_LINUX kernel modules built for the running kernel -->
+	<package>mlnx-ofa_kernel-modules</package>
+
 	<package>ibacm</package>
-	<package>librdmacm</package>
-	<package>librdmacm-utils</package>
-	<package>librdmacm-devel</package>
+	<package>ibdump</package>
+	<package>ibutils</package>
+	<package>ibutils2</package>
+	<package>infiniband-diags</package>
+	<package>infiniband-diags-compat</package>
+	<package>libibcm</package>
+	<package>libibcm-devel</package>
+	<package>libibmad</package>
+	<package>libibmad-devel</package>
+	<package>libibmad-static</package>
+	<package>libibumad</package>
+	<package>libibumad-devel</package>
+	<package>libibumad-static</package>
+	<package>libibverbs</package>
+	<package>libibverbs-devel</package>
 	<package>libibverbs-devel-static</package>
 	<package>libibverbs-utils</package>
 	<package>libmlx4</package>
 	<package>libmlx4-devel</package>
 	<package>libmlx5</package>
 	<package>libmlx5-devel</package>
-	<package>libibumad-devel</package>
-	<package>libibumad-static</package>
-	<package>libibmad</package>
-	<package>libibmad-devel</package>
-	<package>libibmad-static</package>
-	<package>perftest</package>
-	<package>srptools</package>
-	<package>qperf</package>
-	<package>rds-tools</package>
-	<package>rds-devel</package>
+	<package>librdmacm</package>
+	<package>librdmacm-devel</package>
+	<package>librdmacm-utils</package>
+	<package>librxe</package>
+	<package>librxe-devel-static</package>
+	<package>mft</package>
 	<package>mlnx-ethtool</package>
-	<package>opensm-libs</package>
-	<package>infiniband-diags</package>
-	<package>infiniband-diags-compat</package>
+	<!-- DO NOT install the mlnx-fw-updater package
+	<package>mlnx-fw-updater</package>
+	-->
+	<package>mlnx-iproute2</package>
+	<package>mlnxofed-docs</package>
 	<package>mstflint</package>
-	<package>dapl</package>
-	<package>dapl-devel</package>
-	<package>dapl-devel-static</package>
-	<package>dapl-utils</package>
+	<package>multiperf</package>
 	<package>opensm</package>
 	<package>opensm-devel</package>
+	<package>opensm-libs</package>
 	<package>opensm-static</package>
-	<package>ibdump</package>
-	<package>ibutils2</package>
-	<package>ibutils</package>
-	<package>mft</package>
-	<package>mlnx-ofa_kernel-modules</package>
-	<package>mlnx-ofa_kernel</package>
-	<package>mlnx-ofa_kernel-devel</package>
-	<package>kernel-mft-mlnx</package>
-	<package>iser</package>
-	<package>srp</package>
+	<package>perftest</package>
 
 <post>
 <!-- Need to change this section to be Pythonic and complete
@@ -86,9 +88,22 @@ if [ -f /etc/init.d/irqbalance ]; then
   /sbin/service irqbalance stop
 fi
 
+if [ -f /usr/lib/systemd/system/irqbalance.service ]; then
+  /usr/bin/systemctl stop irqbalance.service
+  /usr/bin/systemctl disable irqbalance.service
+fi
+
 for cpu in $(seq ${MIN_CPU} ${MAX_CPU}); do
   echo "performance" > /sys/devices/system/cpu/cpu${cpu}/cpufreq/scaling_governor;
 done
+</file>
+
+
+<file name="/etc/infiniband/openib.conf" mode="append">
+
+# DO NOT run Firmware update utlity upon system boot in order to update Firmware for newly installed devices
+RUN_FW_UPDATER_ONBOOT=no
+
 </file>
 
 </post>

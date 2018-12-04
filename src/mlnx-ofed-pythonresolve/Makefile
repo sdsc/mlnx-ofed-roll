@@ -1,12 +1,11 @@
-# $Id$
+# $Id: Makefile,v 1.5 2012/11/27 00:48:39 phil Exp $
 #
 # @Copyright@
 #
-#
-#                                 Rocks(r)
-#                          www.rocksclusters.org
-#                          version 6.2 (SideWinder)
-#                          version 7.0 (Manzanita)
+# 				Rocks(r)
+# 		         www.rocksclusters.org
+# 		         version 6.2 (SideWinder)
+# 		         version 7.0 (Manzanita)
 #
 # Copyright (c) 2000 - 2017 The Regents of the University of California.
 # All rights reserved.
@@ -26,9 +25,9 @@
 # 3. All advertising and press materials, printed or electronic, mentioning
 # features or use of this software must display the following acknowledgement:
 #
-#         "This product includes software developed by the Rocks(r)
-#         Cluster Group at the San Diego Supercomputer Center at the
-#         University of California, San Diego and its contributors."
+# 	"This product includes software developed by the Rocks(r)
+# 	Cluster Group at the San Diego Supercomputer Center at the
+# 	University of California, San Diego and its contributors."
 #
 # 4. Except as permitted for the purposes of acknowledgment in paragraph 3,
 # neither the name or logo of this software nor the names of its
@@ -41,7 +40,7 @@
 # San Diego, 9500 Gilman Drive, Mail Code 0910, La Jolla, CA 92093-0910,
 # Ph: (858) 534-5815, FAX: (858) 534-7345, E-MAIL:invent@ucsd.edu
 #
-# THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS
+# THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS''
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
 # THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
 # PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS
@@ -55,34 +54,16 @@
 #
 # @Copyright@
 #
-# $Log$
 
 REDHAT.ROOT = $(CURDIR)/../../
 
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
 
-include pull.mk
 
-build: $(SRC_DIRS)
-	$(SOURCE_DIR)/mlnx_add_kernel_support.sh -y -m $(PWD)/$(SOURCE_DIR) --make-tgz --distro $(DISTRO)
-	tar -xzf /tmp/$(SOURCE_PKG_EXT)
-	grep `uname -r` $(SOURCE_DIR_EXT)/.supported_kernels
+build:
+	echo "Nothing to build"
+	echo "" > $(RPM.FILESLIST)
 
 install::
 	mkdir -p $(ROOT)/$(PKGROOT)
-	mkdir -p $(REDHAT.ROOT)/RPMS/{noarch,x86_64}
-	find $(SOURCE_DIR_EXT)/RPMS -mindepth 1 -maxdepth 1 -name "*.x86_64.rpm" -type f \
-	  -exec cp -av '{}' ../../RPMS/x86_64/ \;
-	find $(SOURCE_DIR_EXT)/RPMS -mindepth 1 -maxdepth 1 -name "*.noarch.rpm" -type f \
-	  -exec cp -av '{}' ../../RPMS/noarch/ \;
-	(	\
-		cd $(ROOT)/$(PKGROOT); \
-		tar -xz --strip-components 1 -f /tmp/$(SOURCE_PKG_EXT) ; \
-	)
-	echo "Removing provided META RPMs..."
-	find $(REDHAT.ROOT)/RPMS/noarch -name "mlnx-ofed-*.rpm" ! -mtime 0 \
-	  -exec /bin/rm -v '{}' \;
-
-clean::
-	rm -rf $(SOURCE_DIR) $(SOURCE_DIR_EXT)
