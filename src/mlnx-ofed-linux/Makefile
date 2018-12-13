@@ -62,6 +62,8 @@ REDHAT.ROOT = $(CURDIR)/../../
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
 
+ROLLNAME=mlnx-ofed
+
 include pull.mk
 
 build: $(SRC_DIRS)
