@@ -66,7 +66,7 @@ host building the roll...
 These RPMs are generally included on Rocks&reg; frontend and development servers.
 
 *NOTE: The roll build process will **UNINSTALL** all Mellanox OFED Linux RPMs
-from the build server during the roll build. DO NOT build this roll on a
+from the build server during the roll build. **DO NOT** build this roll on a
 frontend which is acting as your subnet manager.*
 
 
@@ -100,6 +100,20 @@ directory using [this script][gen_hash]. For example...
 
 - Modify the `version.mk` file in the `src/mlnx-ofed-linux` directory as/if
 necessary
+
+## Conflicts with OS Provided Infiniband RPMs
+
+It is common to update a Rocks system using the `mlnx-ofed-roll` to a newer
+version of `CentOS` and/or apply system updates using an `Updates-CentOS` roll.
+
+In either of these cases it is possible to create a conflict between distro
+provided Infiniband RPMs and those included by the `MLNX_OFED_LINUX` version
+provided by a specific build of this roll source.
+
+Any other roll providing Infiniband related RPMs can create a similar conflict.
+
+An example of this conflict and it's resolution can be found in the `CONFLICTS.md`
+file in this repository.
 
 
 ## Building
