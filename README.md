@@ -100,6 +100,12 @@ directory using [this script][gen_hash]. For example...
 
 - Modify the `version.mk` file in the `src/mlnx-ofed-linux` directory as/if
 necessary
+- Modify the `.mlnx` file in the `src/mlnx-ofed-linux` directory as/if
+necessary
+- Modify the `version.mk` file at the root of the repository as/if
+necessary. The utility scripts, `kern.sh` and `mlnx.sh` can be used to
+obtain the correct values to use for the `ROLLNAME` makefile variable.
+
 
 ## Conflicts with OS Provided Infiniband RPMs
 
@@ -138,11 +144,24 @@ with installation.
 To install, execute these instructions on a Rocks frontend:
 
 ```shell
-% rocks add roll mlnx-ofed-*.iso
-% rocks enable roll mlnx-ofed
+% rocks add roll mlnx-ofed-$(ROLLNAME)*.iso
+% rocks enable roll mlnx-ofed-$(ROLLNAME)
 % cd /export/rocks/install
 % rocks create distro
-% rocks run roll mlnx-ofed | bash
+% rocks run roll mlnx-ofed-$(ROLLNAME) | bash
+```
+...where $(ROLLNAME) may be unique for your build and depends on the running
+kernel of your build host and the version of MLNX_OFED_LINUX that you built.
+
+On the most recent version of OS/MLNX_OFED_LINUX deployed to Comet this would
+be...
+
+```shell
+% rocks add roll mlnx-ofed-4.6-1.0.1.1-3.10.0-957.27.2.el7*.iso
+% rocks enable roll mlnx-ofed-4.6-1.0.1.1-3.10.0-957.27.2.el7
+% cd /export/rocks/install
+% rocks create distro
+% rocks run roll mlnx-ofed-4.6-1.0.1.1-3.10.0-957.27.2.el7 | bash
 ```
 
 
