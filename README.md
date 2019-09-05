@@ -86,16 +86,18 @@ Follow these steps...
 build/install on your system
 - Download the `tgz` version of the [MLNX_OFED_LINUX][mlnx_ofed_linux] software
 stack and place in the `src/mlnx-ofed-linux` directory
-- Generate an updated entry for the binary_hashes file in the `src/mlnx-ofed-linux`
-directory using [this script][gen_hash]. For example...
+- Generate an updated entry for the `binary_hashes` file in the `src/mlnx-ofed-linux`
+directory using [this script][gen_hash].
+
 [gen_hash]: https://raw.githubusercontent.com/sdsc/skeleton-roll/master/gen_hash.sh
 
+For example...
+
 ```shell
-    cd src/mlnx-ofed-linux
-    cp ~/Downloads/MLNX_OFED_LINUX-3.4-1.0.0.0-rhel6.8-x86_64.tgz ./
-    curl -LO https://raw.githubusercontent.com/sdsc/skeleton-roll/master/gen_hash.sh
-    sh ./gen_hash.sh MLNX_OFED_LINUX-3.4-1.0.0.0-rhel6.8-x86_64.tgz | tee -a binary_hashes
-    223210577  bc779f4b3a5c07fb801271bb68d6d07efa24fd03  MLNX_OFED_LINUX-3.4-1.0.0.0-rhel6.8-x86_64.tgz
+% cd src/mlnx-ofed-linux
+% curl -LO https://raw.githubusercontent.com/sdsc/skeleton-roll/master/gen_hash.sh
+% sh ./gen_hash.sh MLNX_OFED_LINUX-*.tgz | tee -a binary_hashes
+    252193073  84799d79649f745b8ecb7e1031ab3f42602f626b  MLNX_OFED_LINUX-4.6-1.0.1.1-rhel7.6-x86_64.tgz
 ```
 
 - Modify the `version.mk` file in the `src/mlnx-ofed-linux` directory as/if
