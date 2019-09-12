@@ -1,7 +1,7 @@
 NAME              = mlnx-ofed-linux
-VERSION           = 4.3
-RELEASE           = 1.0.1.0
-DISTRO            = rhel6.9
+VERSION           = 4.6
+RELEASE           = 1.0.1.1
+DISTRO            = rhel7.6
 EXTRA             = $(DISTRO)-x86_64
 PKGROOT           = /opt/mlnx-ofed-linux
 
